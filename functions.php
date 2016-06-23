@@ -51,4 +51,26 @@ require_once("settings.php");
         mysqli_close($mysqli);
         return $message;
     }
+
+    function update_message($id, $title, $content){
+        $mysqli = mysqli_connect(SERVER, USERNAME, PASSWORD, DATABASE_NAME);
+        if ($mysqli->connect_errno) {
+            printf("Не удалось подключиться: %s\n", $mysqli->connect_error);
+            exit();
+        }
+        $sql = "UPDATE messages SET title='".$title."',content='".$content."' WHERE id='".$id."'";
+        $results = mysqli_query($mysqli, $sql);
+        mysqli_close($mysqli);
+    }
+
+    function delete_message($id){
+        $mysqli = mysqli_connect(SERVER, USERNAME, PASSWORD, DATABASE_NAME);
+        if ($mysqli->connect_errno) {
+            printf("Не удалось подключиться: %s\n", $mysqli->connect_error);
+            exit();
+        }
+        $sql = "DELETE FROM messages WHERE id ='".$id."'";
+        $results = mysqli_query($mysqli, $sql);
+        mysqli_close($mysqli);
+    }
 ?>

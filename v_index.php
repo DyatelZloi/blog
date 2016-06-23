@@ -6,6 +6,9 @@ include("functions.php");
  * Date: 23.06.2016
  * Time: 18:05
  */
+    $id = $_POST['id'];
+    if ($id!='')
+        delete_message($id);
 ?>
     <a href="new_message.php">Новое сообщение</a>
     </br>
@@ -20,5 +23,12 @@ include("functions.php");
         echo " $title </br>";
         echo " $content </br>";
         echo '<a href="article.php?id='.$id.'"> Просмотреть сообщение</a> </br>';
+        echo '<a href="edit.php?id='.$id.'&title='.$title.'&message='.$content.'"> Редактировать сообщение</a> </br>';
+        echo ('
+            <form method="post">
+                <input name="id" type="hidden" value="'.$id.'"/>
+                <input type="submit" value="Удалить"/>
+            </form>
+        ');
     }
 ?>

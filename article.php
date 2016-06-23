@@ -1,27 +1,16 @@
 <?php
-    include('functions.php');
-    $id = $_GET['id'];
-?>
-<html>
-    <head>
-        <meta charset="UTF-8"/>
-        <title>
-            Просмотр статьи
-        </title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
-    <body>
-        <div id = "head">
+    include_once('view.php');
 
-        </div>
-        <?php
-            $message = get_message($id);
-            foreach ($message as &$value) {
-                $title = $value['title'];
-                $content = $value['content'];
-                echo $title;
-                echo $content;
-            }
-        ?>
-    </body>
-</html>
+    // Информация для отображения.
+    $title = 'Просмотр сообщения';
+
+    // Внутренний шаблон.
+    $content = template('v_article.php');
+
+    // Внешний шаблон.
+    $page = template(
+        'v_main.php',
+        array('title' => $title, 'content' => $content));
+
+    // Вывод.
+    echo $page;
