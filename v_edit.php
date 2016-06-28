@@ -1,5 +1,4 @@
 <?php
-include("functions.php");
 /**
  * Created by PhpStorm.
  * User: DiZi
@@ -13,7 +12,7 @@ $message1 = $_GET['message'];
 $title = $_POST['title'];
 $message = $_POST['message'];
 if ($title!='' && $message!='')
-    update_message($id, $title, $message);
+    $object->edit($id, $title, $message);
 ?>
 <form method="post">
     <input name="title" type="text" value="<?php echo $title1 ?>"/>

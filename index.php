@@ -1,18 +1,28 @@
 ﻿<?php
-    include_once('view.php');
+    function __autoload($classname){
+        include_once("$classname.php");
+    }
 
+    $action = isset($_GET['action']) ? $_GET['action'] : 'action_index';
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
-    // Информация для отображения.
-    $title = 'Главная';
-
-    // Внутренний шаблон.
-    $content = template('v_index.php');
-
     // Внешний шаблон.
-    $page = template(
-        'v_main.php',
-        array('title' => $title, 'content' => $content, 'page' => $page));
+    $page = new c_article();
 
-    // Вывод.
-    echo $page;
+    echo $page->Request($action);
+    /*switch ($action){
+        case 'index' : echo $page->action_index();
+            break;
+        case 'new' : echo $page->action_new();
+            break;
+        case 'edit' : echo $page->action_edit();
+            break;
+        case 'view' : echo $page->action_get();
+            break;
+        case '': echo $page->action_delete();
+            break;
+        default : echo $page->action_index();
+    }
+    */
+
+

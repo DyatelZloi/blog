@@ -1,14 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: DiZi
- * Date: 23.06.2016
- * Time: 18:01
- */
-//Основной шаблон
-    // Языковая настройка.
-    setlocale(LC_ALL, 'ru_RU.UTF-8'); // Устанавливаем нужную локаль (для дат, денег, запятых и пр.)
-    mb_internal_encoding('UTF-8'); // Устанавливаем кодировку строк
+    setlocale(LC_ALL, 'ru_RU.UTF-8');
+    mb_internal_encoding('UTF-8');
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +12,7 @@
     </head>
     <body>
         <h1><?php echo $title?></h1>
-
+        <a href="index.php">На главную</a>
         <?php echo $content?>
 
         <p>

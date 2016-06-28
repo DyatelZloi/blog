@@ -1,5 +1,4 @@
 <?php
-    include("functions.php");
     /**
      * Created by PhpStorm.
      * User: DiZi
@@ -9,7 +8,7 @@
 
     $id = $_GET['id'];
 
-    $message = get_message($id);
+    $message = $object->get($id);
     foreach ($message as &$value) {
         $title = $value['title'];
         $content = $value['content'];
